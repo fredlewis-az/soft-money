@@ -15,10 +15,113 @@
   var monthTrack = document.getElementById("month-track");
   var cardsEl = document.getElementById("cards");
 
+  var tipEl = document.getElementById("tip");
+
   var lastRaw = null;
   var hasData = false;
   var busy = false;
   var queued = false;
+  var sawHidden = false;
+
+  var TIPS = {
+    "way-ahead": [
+      "Look at you, swimming in cash like Scrooge McDuck.",
+      "Date night? The budget says yes.",
+      "The cushion is fluffy. Do a little dance.",
+      "Future you is already grateful.",
+      "You are so early the month is still tying its shoes.",
+      "This much room should be celebrated. Enjoy it.",
+      "Treat yourselves. The numbers said please."
+    ],
+    "ahead": [
+      "A little ahead, and it looks good on you.",
+      "Quiet win. The good snacks can stay.",
+      "Breathing room achieved. No cape required.",
+      "The pace is back there somewhere, waving.",
+      "Soft money, softer landing.",
+      "Keep this up and the 1st will feel like a gift.",
+      "Nice cushion. Guard it like the last cookie."
+    ],
+    "on-pace": [
+      "Right on the money. Literally.",
+      "Steady as she goes.",
+      "This is the plan, and the plan likes you.",
+      "Not too spicy, not too plain. Just right.",
+      "Goldilocks would high-five this month.",
+      "Walking the line, and the line is friendly.",
+      "Textbook. The budget is smiling.",
+      "On the rails. Choo choo, but make it responsible."
+    ],
+    "slightly-over": [
+      "Easy, tiger. Maybe skip the Target run.",
+      "A smidge hot. Nothing a quiet week cannot cool.",
+      "The budget raised an eyebrow, not an alarm.",
+      "Close. The couch does not need another pillow.",
+      "Gentle brakes. You can still stick the landing.",
+      "Warm, not on fire. Home dinner is a power move.",
+      "A tiny detour. The month is still on your side.",
+      "We can land this. Leftovers are a love language."
+    ],
+    "way-over": [
+      "Whoa there. Wallets in the drawer until the 1st.",
+      "The budget called. It wants its money back.",
+      "Plot twist: the couch and a walk are free.",
+      "Park the cart. Wave at the store from the parking lot.",
+      "The fun can wait. The reset cannot.",
+      "Deep breath. The 1st brings a fresh start.",
+      "Leftovers-and-library week. We have done harder things.",
+      "Let us admire things through the window for a bit."
+    ],
+    "over-budget": [
+      "Every dollar has a job, and some of them are working overtime.",
+      "The allowance is spent. Creativity is still on the clock.",
+      "We crossed the line and kept jogging. Walking is free.",
+      "The jar tipped over. We will set it upright next month.",
+      "Over the line, under the drama. Fresh start on the 1st.",
+      "Budget used up. The rest is a bonus round of free fun.",
+      "Empty envelope, full of information. Next month is a clean page.",
+      "Spent the plan. The 1st gets a brand-new one."
+    ]
+  };
+
+  var CARD_TIPS = {
+    "way-ahead": [
+      "Date night is a yes.",
+      "Quack. The cushion is real.",
+      "So early. Enjoy it.",
+      "The numbers said please.",
+      "Future you says thanks.",
+      "Room to spare. Dance.",
+      "Treat yourselves a little."
+    ],
+    "way-over": [
+      "Wallets away until the 1st.",
+      "The budget wants a word.",
+      "Couch and a walk are free.",
+      "Park the cart for now.",
+      "Reset button: the 1st.",
+      "Window-shopping counts.",
+      "The fun can wait a bit."
+    ],
+    "over-budget": [
+      "Some dollars are on overtime.",
+      "Spent, not doomed.",
+      "Fresh start on the 1st.",
+      "Over the line, under the drama.",
+      "We will right the jar.",
+      "Walking is free from here.",
+      "Next month, a clean page."
+    ]
+  };
+
+  var BAND_COLOR = {
+    "way-ahead": "teal",
+    "ahead": "teal",
+    "on-pace": "navy",
+    "slightly-over": "amber",
+    "way-over": "brick",
+    "over-budget": "brick"
+  };
 
   function $(tag, className, text) {
     var node = document.createElement(tag);
@@ -108,6 +211,46 @@
     return day;
   }
 
+  function paceBand(spentCents, budgetCents, day, days) {
+    if (!(budgetCents > 0)) return spentCents > 0 ? "over-budget" : "on-pace";
+    if (spentCents > budgetCents) return "over-budget";
+    var pace = days > 0 ? Math.round(budgetCents * day / days) : 0;
+    var ratio = (spentCents - pace) / budgetCents;
+    if (ratio <= -0.15) return "way-ahead";
+    if (ratio <= -0.05) return "ahead";
+    if (ratio <= 0.03) return "on-pace";
+    if (ratio <= 0.10) return "slightly-over";
+    return "way-over";
+  }
+
+  function pickTip(band, previous, avoid, source) {
+    var list = (source && source[band]) || TIPS[band] || TIPS["on-pace"];
+    var pool = list.filter(function (line) {
+      return line !== previous && (!avoid || avoid.indexOf(line) === -1);
+    });
+    if (!pool.length) pool = list.filter(function (line) { return line !== previous; });
+    if (!pool.length) pool = list;
+    return pool[Math.floor(Math.random() * pool.length)];
+  }
+
+  function paintTip(node, band, className, avoid) {
+    node.hidden = false;
+    node.dataset.band = band;
+    var source = className === "card-tip" ? CARD_TIPS : null;
+    node.textContent = pickTip(band, node.textContent, avoid, source);
+    node.className = className + " " + BAND_COLOR[band];
+  }
+
+  function rollTips() {
+    if (tipEl.dataset.band) paintTip(tipEl, tipEl.dataset.band, "tip");
+    var notes = cardsEl.querySelectorAll(".card-tip");
+    var used = [];
+    for (var i = 0; i < notes.length; i++) {
+      paintTip(notes[i], notes[i].dataset.band, "card-tip", used);
+      used.push(notes[i].textContent);
+    }
+  }
+
   function classify(spentCents, budgetCents, day, days) {
     var pace = days > 0 ? Math.round(budgetCents * day / days) : 0;
     var under = pace - spentCents;
@@ -180,6 +323,8 @@
     updatedEl.textContent = formatUpdated(data.updated_at);
     statusEl.textContent = overall.headline;
     statusEl.className = "status " + overall.level;
+    tipEl.dataset.band = paceBand(spent, totalBudget, day, days);
+    paintTip(tipEl, tipEl.dataset.band, "tip");
     notice.hidden = true;
     retry.hidden = true;
 
@@ -198,6 +343,7 @@
     monthTrack.setAttribute("aria-label", monthLabel.textContent);
 
     cardsEl.replaceChildren();
+    var usedTips = [];
     categories.forEach(function (cat) {
       var status = classify(cat.spent, cat.budget, day, days);
       var card = $("article", "card " + status.level);
@@ -232,6 +378,15 @@
       mini.appendChild(monthBar);
 
       card.appendChild(mini);
+      var band = paceBand(cat.spent, cat.budget, day, days);
+      if (band === "way-ahead" || band === "way-over" || band === "over-budget") {
+        var note = $("p", "card-tip");
+        note.dataset.band = band;
+        paintTip(note, band, "card-tip", usedTips);
+        usedTips.push(note.textContent);
+        card.appendChild(note);
+        card.setAttribute("aria-label", card.getAttribute("aria-label") + ". " + note.textContent);
+      }
       cardsEl.appendChild(card);
     });
 
@@ -246,6 +401,7 @@
     }
     statusEl.className = "status";
     statusEl.textContent = message;
+    tipEl.hidden = true;
     hero.hidden = true;
     cardsEl.replaceChildren();
     retry.hidden = false;
@@ -264,10 +420,17 @@
         return res.text();
       })
       .then(function (raw) {
-        if (raw === lastRaw) return;
+        if (raw === lastRaw) {
+          if (sawHidden) {
+            sawHidden = false;
+            rollTips();
+          }
+          return;
+        }
         var data = JSON.parse(raw);
         render(data);
         lastRaw = raw;
+        sawHidden = false;
       })
       .catch(function () {
         showError("Couldn't load budget data.");
@@ -286,9 +449,15 @@
     refresh();
   }
 
-  retry.addEventListener("click", refresh);
+  retry.addEventListener("click", function () {
+    sawHidden = true;
+    refresh();
+  });
   window.addEventListener("focus", schedule);
   window.addEventListener("pageshow", schedule);
-  document.addEventListener("visibilitychange", schedule);
+  document.addEventListener("visibilitychange", function () {
+    if (document.visibilityState === "hidden") sawHidden = true;
+    schedule();
+  });
   refresh();
 })();

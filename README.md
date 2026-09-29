@@ -48,6 +48,8 @@ Pace = budget × (`day_of_month` / `days_in_month`).
 
 The same rule is applied to the month total and to each category. Dollar gaps in the headline are rounded to the nearest dollar. Category cards show budget remaining (`$left` or `$over`), colored with that pace rule.
 
+Under the headline, a random tip matches a finer pace band: `(spent − pace) / budget`. Way ahead is at or below −15%, ahead is −15% to −5%, on pace is −5% to +3%, slightly over is +3% to +10%, and way over is above +10%. Spending more than the budget uses the over-budget lines. The line is teal, navy, amber, or brick to match the band. A category shows a tiny version only when it is way ahead, way over, or over budget. A new line is chosen on each load.
+
 ### Sample file
 
 The committed `data.json` is sample data (`"sample": true`) for 28 October 2026, updated `2026-10-28T19:15:00-07:00`. Spent figures are examples:
