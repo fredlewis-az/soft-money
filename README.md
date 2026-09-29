@@ -42,7 +42,7 @@ Total spent is the sum of category `spent` values. There is no separate spent to
 
 Pace = budget × (`day_of_month` / `days_in_month`).
 
-- Spent at or under pace: green, “On track, $X under pace”.
+- Spent at or under pace: teal, “On track, $X under pace”.
 - Over pace by at most 5% of pace: amber, “Behind, $X over pace”.
 - Over pace by more than 5% of pace: red, “Behind, $X over pace”.
 
