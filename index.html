@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="See if monthly soft spending is on pace.">
+  <meta name="theme-color" content="#eef1f4" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0e1218" media="(prefers-color-scheme: dark)">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Soft Money">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>Soft Money</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="apple-touch-icon.png" type="image/png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="banner" class="banner" hidden>SAMPLE DATA, preview only</div>
+  <div class="wrap">
+    <header>
+      <div class="header-row">
+        <h1>Soft Money</h1>
+        <p id="month" class="month"></p>
+      </div>
+      <p id="updated" class="updated"></p>
+    </header>
+
+    <p id="status" class="status" role="status">Loading…</p>
+    <button id="retry" type="button" hidden>Try again</button>
+    <p id="notice" class="notice" hidden></p>
+
+    <section id="hero" class="panel" hidden>
+      <div class="bar-block">
+        <p class="kicker">Spending</p>
+        <p id="spend-label" class="bar-label"></p>
+        <div class="track-wrap">
+          <div id="spend-track" class="track" role="img"></div>
+          <div id="spend-marker" class="marker" hidden></div>
+        </div>
+      </div>
+      <div class="bar-block">
+        <p class="kicker">Month</p>
+        <p id="month-label" class="bar-label"></p>
+        <div class="track-wrap">
+          <div id="month-track" class="track" role="img"></div>
+        </div>
+      </div>
+      <p class="hint">The line on spending is where today falls in the month.</p>
+    </section>
+
+    <section id="cards" class="cards" aria-label="Categories"></section>
+
+    <footer>
+      <p>Pocket money not included</p>
+    </footer>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
