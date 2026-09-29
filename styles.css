@@ -75,19 +75,19 @@ body {
 }
 
 .wrap {
-  width: min(560px, 100%);
+  width: min(480px, 100%);
   margin: 0 auto;
-  padding: 22px 18px 32px;
+  padding: 16px 12px 12px;
 }
 
 body:not(.sample) .wrap {
-  padding-top: calc(22px + env(safe-area-inset-top));
+  padding-top: calc(16px + env(safe-area-inset-top));
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
 }
 
 .logo {
@@ -116,7 +116,7 @@ h1 {
 }
 
 .subtitle {
-  margin: 6px 0 0;
+  margin: 3px 0 0;
   color: var(--teal);
   font-size: 1.05rem;
   font-weight: 700;
@@ -136,7 +136,7 @@ h1 {
 }
 
 .updated {
-  margin: 16px 0 0;
+  margin: 12px 0 0;
   padding: 10px 12px;
   background: #ccfbf1;
   color: #1a365d;
@@ -150,7 +150,7 @@ h1 {
 }
 
 .rules {
-  margin: 18px 0 0;
+  margin: 12px 0 0;
 }
 
 .rules span {
@@ -168,7 +168,7 @@ h1 {
 }
 
 .status {
-  margin: 26px 0 10px;
+  margin: 16px 0 6px;
   font-size: clamp(1.7rem, 7.4vw, 2.05rem);
   font-weight: 700;
   letter-spacing: -0.035em;
@@ -178,7 +178,7 @@ h1 {
 }
 
 .tip {
-  margin: 0 0 28px;
+  margin: 0 0 14px;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 1.35;
@@ -186,7 +186,7 @@ h1 {
 }
 
 .card-tip {
-  margin: 12px 0 0;
+  margin: 8px 0 0;
   font-size: 1rem;
   font-weight: 600;
   line-height: 1.3;
@@ -258,7 +258,7 @@ button:focus-visible {
 }
 
 .panel {
-  padding: 20px 18px 18px;
+  padding: 14px 14px 12px;
   position: relative;
   overflow: hidden;
 }
@@ -290,7 +290,7 @@ button:focus-visible {
 }
 
 .bar-block + .bar-block {
-  margin-top: 22px;
+  margin-top: 14px;
 }
 
 .kicker {
@@ -310,7 +310,7 @@ button:focus-visible {
 }
 
 .bar-label {
-  margin: 4px 0 10px;
+  margin: 2px 0 8px;
   font-size: 1.0625rem;
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -323,7 +323,7 @@ button:focus-visible {
 }
 
 .track {
-  height: 34px;
+  height: 30px;
   border-radius: 999px;
   background: var(--track);
   border: 1.5px solid var(--outline);
@@ -366,25 +366,25 @@ button:focus-visible {
 }
 
 .hint {
-  margin-top: 16px;
+  margin-top: 12px;
 }
 
 .cards {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-  margin-top: 28px;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 12px;
 }
 
 .card {
   position: relative;
   min-width: 0;
   overflow: hidden;
-  padding: 16px 16px 18px 18px;
+  padding: 10px 8px 10px 11px;
 }
 
 .card h2 {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
   color: var(--heading);
   font-size: 1.0625rem;
   line-height: 1.25;
@@ -402,13 +402,13 @@ button:focus-visible {
 }
 
 .remain {
-  margin: 4px 0 14px;
+  margin: 1px 0 8px;
   font-size: 1.125rem;
   font-weight: 700;
 }
 
 .card .track {
-  height: 14px;
+  height: 11px;
   border-width: 1px;
 }
 
@@ -420,14 +420,14 @@ button:focus-visible {
 .mini {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 3px;
 }
 
 .mini span {
   font-size: 1rem;
   font-weight: 600;
   color: var(--muted);
-  margin-top: 6px;
+  margin-top: 3px;
 }
 
 .mini span:first-child {
@@ -435,13 +435,13 @@ button:focus-visible {
 }
 
 footer {
-  margin-top: 32px;
+  margin-top: 18px;
   text-align: center;
-  padding-bottom: 8px;
+  padding-bottom: 4px;
 }
 
 .tagline {
-  margin: 18px 0 8px;
+  margin: 12px 0 4px;
   color: var(--warn);
   font-family: Georgia, "Iowan Old Style", Palatino, "Palatino Linotype", "Times New Roman", serif;
   font-style: italic;
@@ -460,19 +460,12 @@ footer {
   }
 }
 
-@media (min-width: 540px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
-    gap: 18px;
-  }
-}
-
 @media (min-width: 700px) {
   .wrap {
-    padding-top: 32px;
+    padding-top: 28px;
   }
 
   body:not(.sample) .wrap {
-    padding-top: 32px;
+    padding-top: 28px;
   }
 }
