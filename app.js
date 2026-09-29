@@ -57,16 +57,21 @@
   function formatUpdated(iso) {
     var date = new Date(iso);
     if (Number.isNaN(date.getTime())) return "Updated " + String(iso);
-    var formatted = new Intl.DateTimeFormat("en-US", {
+    var parts = new Intl.DateTimeFormat("en-US", {
       timeZone: "America/Phoenix",
+      weekday: "short",
       month: "short",
       day: "numeric",
       year: "numeric",
       hour: "numeric",
       minute: "2-digit",
-      timeZoneName: "short"
-    }).format(date);
-    return "Updated " + formatted;
+      hour12: true
+    }).formatToParts(date);
+    function part(type) {
+      var found = parts.find(function (item) { return item.type === type; });
+      return found ? found.value : "";
+    }
+    return "Updated " + part("weekday") + ", " + part("month") + " " + part("day") + ", " + part("year") + " at " + part("hour") + ":" + part("minute") + " " + part("dayPeriod") + " (AZ)";
   }
 
   function formatMonth(ym) {

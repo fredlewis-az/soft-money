@@ -31,7 +31,7 @@ https://fredlewis-az.github.io/soft-money/
 | Field | Meaning |
 | --- | --- |
 | `sample` | When `true`, the page shows a banner: `SAMPLE DATA, preview only`. |
-| `updated_at` | ISO-8601 timestamp with a numeric offset. Displayed in America/Phoenix. |
+| `updated_at` | ISO-8601 timestamp with a numeric offset. Shown near the top in America/Phoenix, for example `Updated Wed, Oct 28, 2026 at 7:15 PM (AZ)`. |
 | `month` | Budget month, `YYYY-MM`. |
 | `days_in_month` | Number of days in that month. |
 | `day_of_month` | Optional day number used for pace. If it is omitted, the page uses the calendar day of `updated_at` in America/Phoenix. |
