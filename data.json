@@ -12,5 +12,9 @@
     {"name": "Personal Care", "budget": 550, "spent": 538.10},
     {"name": "Shopping buffer", "budget": 400, "spent": 262.75},
     {"name": "Farmer's Market/Other", "budget": 50, "spent": 18.00}
+  ],
+  "pockets": [
+    {"name": "Krystal", "funded": 150, "spent": 107.90},
+    {"name": "Fred", "funded": 150, "spent": 64.50}
   ]
 }

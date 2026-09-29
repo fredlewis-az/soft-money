@@ -14,6 +14,8 @@
   var monthLabel = document.getElementById("month-label");
   var monthTrack = document.getElementById("month-track");
   var cardsEl = document.getElementById("cards");
+  var pocketsEl = document.getElementById("pockets");
+  var pocketCardsEl = document.getElementById("pocket-cards");
 
   var tipEl = document.getElementById("tip");
 
@@ -390,7 +392,54 @@
       cardsEl.appendChild(card);
     });
 
+    renderPockets(data.pockets);
     hasData = true;
+  }
+
+  function readPockets(pockets) {
+    if (pockets == null) return [];
+    if (!Array.isArray(pockets)) throw new Error("pockets must be an array");
+    return pockets.map(function (pocket) {
+      if (!pocket || typeof pocket.name !== "string" || !pocket.name) throw new Error("pocket name missing");
+      var funded = toCents(pocket.funded);
+      var spentCents = toCents(pocket.spent);
+      if (!Number.isFinite(funded) || funded < 0 || !Number.isFinite(spentCents) || spentCents < 0) {
+        throw new Error("pocket amounts missing");
+      }
+      return { name: pocket.name, funded: funded, spent: spentCents };
+    });
+  }
+
+  function renderPockets(raw) {
+    var pockets = readPockets(raw);
+    pocketCardsEl.replaceChildren();
+    if (!pockets.length) {
+      pocketsEl.hidden = true;
+      return;
+    }
+    pockets.forEach(function (pocket) {
+      var over = pocket.spent > pocket.funded;
+      var level = over ? "bad" : "good";
+      var leftLabel = remainText(pocket.funded, pocket.spent);
+      var ofLabel = moneyCents(pocket.spent) + " of " + moneyExact(pocket.funded);
+      var summary = leftLabel + ", " + ofLabel;
+      var card = $("article", "card pocket " + level);
+      card.setAttribute("aria-label", pocket.name + ", " + summary);
+
+      card.appendChild($("h2", null, pocket.name));
+      var line = $("p", "pocket-line");
+      line.appendChild($("span", "remain " + level, leftLabel));
+      line.appendChild(document.createTextNode(", " + ofLabel));
+      card.appendChild(line);
+
+      var track = $("div", "track");
+      track.setAttribute("role", "img");
+      track.setAttribute("aria-label", pocket.name + " pocket, " + summary);
+      setFill(track, pocket.spent, pocket.funded, level);
+      card.appendChild(track);
+      pocketCardsEl.appendChild(card);
+    });
+    pocketsEl.hidden = false;
   }
 
   function showError(message) {
@@ -404,6 +453,8 @@
     tipEl.hidden = true;
     hero.hidden = true;
     cardsEl.replaceChildren();
+    pocketCardsEl.replaceChildren();
+    pocketsEl.hidden = true;
     retry.hidden = false;
   }
 

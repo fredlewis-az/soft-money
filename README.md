@@ -4,7 +4,7 @@ A one-page dashboard for Fred and Krystal, branded as The Lewis Ledger. Tap the 
 
 The page is plain HTML, CSS, and vanilla JavaScript. It has no build step and no framework. The only network request is `./data.json`.
 
-Pocket money is not included.
+Pocket money is tracked separately and is not part of the soft-money total or the pace math.
 
 Live site (after GitHub Pages is enabled from the `main` branch root):
 
@@ -24,6 +24,10 @@ https://fredlewis-az.github.io/soft-money/
   "total_budget": 3000,
   "categories": [
     { "name": "Grocery/Pet/etc Store", "budget": 750, "spent": 671.4 }
+  ],
+  "pockets": [
+    { "name": "Krystal", "funded": 150, "spent": 107.9 },
+    { "name": "Fred", "funded": 150, "spent": 64.5 }
   ]
 }
 ```
@@ -37,8 +41,9 @@ https://fredlewis-az.github.io/soft-money/
 | `day_of_month` | Optional day number used for pace. If it is omitted, the page uses the calendar day of `updated_at` in America/Phoenix. |
 | `total_budget` | Monthly soft-money budget. Headline pace uses this figure. |
 | `categories` | One object per category: `name` (string), `budget` (number), `spent` (number). |
+| `pockets` | Optional. When present, an array of `{ "name", "funded", "spent" }`. Each person gets $75 per paycheck; `funded` is the amount received so far and `spent` is what has been used. If `pockets` is missing or empty, the Pockets section is hidden. |
 
-Total spent is the sum of category `spent` values. There is no separate spent total in the file.
+Total spent is the sum of category `spent` values. There is no separate spent total in the file. Pocket `funded` and `spent` are not added to `total_budget`, to total spent, or to pace.
 
 Pace = budget × (`day_of_month` / `days_in_month`).
 
@@ -64,6 +69,8 @@ The committed `data.json` is sample data (`"sample": true`) for 28 October 2026,
 | Farmer's Market/Other | 50 | 18.00 | under (teal) |
 
 Combined spent is $2,558.30. Pace on a $3,000 budget at day 28 of 31 is $2,709.68, about $151 under pace, so the headline is teal: “On track, $151 under pace”.
+
+The sample also includes two pockets, each funded at $150 (two $75 paychecks). Krystal has $107.90 spent ($42.10 left). Fred has $64.50 spent ($85.50 left). Those figures do not change the headline or the category pace colors.
 
 ## Freshness
 
