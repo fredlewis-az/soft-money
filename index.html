@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="See if monthly soft spending is on pace.">
-  <meta name="theme-color" content="#eef1f4" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#0e1218" media="(prefers-color-scheme: dark)">
+  <meta name="description" content="The Lewis Ledger. See if monthly soft spending is on pace.">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1c33" media="(prefers-color-scheme: dark)">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-title" content="Soft Money">
+  <meta name="apple-mobile-web-app-title" content="Lewis Ledger">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <title>Soft Money</title>
+  <title>The Lewis Ledger</title>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="apple-touch-icon.png" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -20,11 +20,19 @@
   <div id="banner" class="banner" hidden>SAMPLE DATA, preview only</div>
   <div class="wrap">
     <header>
-      <div class="header-row">
-        <h1>Soft Money</h1>
-        <p id="month" class="month"></p>
+      <div class="brand">
+        <svg class="logo" viewBox="0 0 72 72" width="52" height="52" aria-hidden="true">
+          <circle cx="36" cy="36" r="31.5" fill="none" stroke="currentColor" stroke-width="3.6"/>
+          <circle class="logo-inner" cx="36" cy="36" r="24.2" fill="none" stroke-width="1.7"/>
+          <text x="36" y="36.2" text-anchor="middle" dominant-baseline="central" fill="currentColor" font-family="Helvetica, Arial, 'Liberation Sans', sans-serif" font-weight="700" font-size="32">L</text>
+        </svg>
+        <div class="brand-text">
+          <h1>The Lewis Ledger</h1>
+          <p class="subtitle">Soft Money<span id="month"></span></p>
+        </div>
       </div>
       <p id="updated" class="updated"></p>
+      <div class="rules" aria-hidden="true"><span></span><span></span></div>
     </header>
 
     <p id="status" class="status" role="status">Loading…</p>
@@ -53,7 +61,9 @@
     <section id="cards" class="cards" aria-label="Categories"></section>
 
     <footer>
-      <p>Pocket money not included</p>
+      <div class="rules" aria-hidden="true"><span></span><span></span></div>
+      <p class="tagline">Every dollar has a job.</p>
+      <p class="fine">Pocket money not included</p>
     </footer>
   </div>
   <script src="app.js"></script>

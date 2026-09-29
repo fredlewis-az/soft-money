@@ -1,12 +1,12 @@
 {
-  "name": "Soft Money",
-  "short_name": "Soft Money",
-  "description": "See if monthly soft spending is on pace.",
+  "name": "The Lewis Ledger",
+  "short_name": "Lewis Ledger",
+  "description": "The Lewis Ledger. See if monthly soft spending is on pace.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#eef1f4",
-  "theme_color": "#eef1f4",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "icon-192.png",

@@ -1,6 +1,6 @@
-# Soft Money
+# The Lewis Ledger — Soft Money
 
-A one-page dashboard for Fred and Krystal. Tap the home-screen icon and see whether this month’s soft (flexible) spending is on pace.
+A one-page dashboard for Fred and Krystal, branded as The Lewis Ledger. Tap the home-screen icon and see whether this month’s soft (flexible) spending is on pace.
 
 The page is plain HTML, CSS, and vanilla JavaScript. It has no build step and no framework. The only network request is `./data.json`.
 
@@ -54,14 +54,14 @@ The committed `data.json` is sample data (`"sample": true`) for 28 October 2026,
 
 | Category | Budget | Spent | Versus pace |
 | --- | ---: | ---: | --- |
-| Grocery/Pet/etc Store | 750 | 671.40 | under (green) |
+| Grocery/Pet/etc Store | 750 | 671.40 | under (teal) |
 | Costco | 650 | 612.85 | about 4% over (amber) |
-| Fun | 600 | 455.20 | under (green) |
+| Fun | 600 | 455.20 | under (teal) |
 | Personal Care | 550 | 538.10 | about 8% over (red) |
-| Shopping buffer | 400 | 262.75 | under (green) |
-| Farmer's Market/Other | 50 | 18.00 | under (green) |
+| Shopping buffer | 400 | 262.75 | under (teal) |
+| Farmer's Market/Other | 50 | 18.00 | under (teal) |
 
-Combined spent is $2,558.30. Pace on a $3,000 budget at day 28 of 31 is $2,709.68, about $151 under pace, so the headline is green: “On track, $151 under pace”.
+Combined spent is $2,558.30. Pace on a $3,000 budget at day 28 of 31 is $2,709.68, about $151 under pace, so the headline is teal: “On track, $151 under pace”.
 
 ## Freshness
 
@@ -69,7 +69,7 @@ Every load fetches `./data.json?t=<timestamp>` with `cache: "no-store"`. The pag
 
 ## Add to Home Screen
 
-The page sets `apple-mobile-web-app-capable`, a manifest with `display: standalone`, and an apple touch icon. In Safari, Share → Add to Home Screen. The icon opens full screen as Soft Money.
+The page sets `apple-mobile-web-app-capable`, a manifest with `display: standalone`, and an apple touch icon. In Safari, Share → Add to Home Screen. The icon opens full screen as Lewis Ledger.
 
 ## Hosting
 
