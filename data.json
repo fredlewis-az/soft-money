@@ -1,12 +1,12 @@
 {
   "sample": false,
-  "updated_at": "2026-10-05T11:45:54-07:00",
+  "updated_at": "2026-10-05T13:01:54-07:00",
   "month": "2026-10",
   "days_in_month": 31,
   "day_of_month": 5,
   "total_budget": 3000,
   "categories": [
-    {"name": "Grocery/Pet/etc Store", "budget": 750, "spent": 89.58},
+    {"name": "Grocery/Pet/etc Store", "budget": 750, "spent": 141.87},
     {"name": "Costco", "budget": 650, "spent": 444.8},
     {"name": "Fun", "budget": 600, "spent": 284.57},
     {"name": "Personal Care", "budget": 550, "spent": 427.17},
