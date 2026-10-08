@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "updated_at": "2026-10-08T04:16:46-07:00",
+  "updated_at": "2026-10-08T07:40:37-07:00",
   "month": "2026-10",
   "days_in_month": 31,
   "day_of_month": 8,
@@ -15,6 +15,6 @@
   ],
   "pockets": [
     {"name": "Krystal", "funded": 150, "spent": 117.99},
-    {"name": "Fred", "funded": 150, "spent": 19.37}
+    {"name": "Fred", "funded": 150, "spent": 31.71}
   ]
 }
