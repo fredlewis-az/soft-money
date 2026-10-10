@@ -1,6 +1,6 @@
 {
   "sample": false,
-  "updated_at": "2026-10-10T16:16:57-07:00",
+  "updated_at": "2026-10-10T16:47:32-07:00",
   "month": "2026-10",
   "days_in_month": 31,
   "day_of_month": 10,
@@ -10,7 +10,7 @@
     {"name": "Costco", "budget": 650, "spent": 444.8},
     {"name": "Fun", "budget": 600, "spent": 1117.15},
     {"name": "Personal Care", "budget": 550, "spent": 427.17},
-    {"name": "Shopping buffer", "budget": 400, "spent": 54.38},
+    {"name": "Shopping buffer", "budget": 400, "spent": 71.77},
     {"name": "Farmer's Market/Other", "budget": 50, "spent": 0}
   ],
   "pockets": [
