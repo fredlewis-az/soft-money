@@ -1,15 +1,15 @@
 {
   "sample": false,
-  "updated_at": "2026-10-30T17:11:19-07:00",
+  "updated_at": "2026-10-31T17:14:14-07:00",
   "month": "2026-10",
   "days_in_month": 31,
-  "day_of_month": 30,
+  "day_of_month": 31,
   "total_budget": 3000.28,
   "categories": [
     {"name": "Grocery/Pet/etc Store", "budget": 596.36, "spent": 402.06},
     {"name": "Costco", "budget": 650, "spent": 508.4},
-    {"name": "Fun", "budget": 600.28, "spent": 1690.87},
-    {"name": "Personal Care", "budget": 550, "spent": 523.17},
+    {"name": "Fun", "budget": 600.28, "spent": 1777.6},
+    {"name": "Personal Care", "budget": 550, "spent": 619.17},
     {"name": "Shopping buffer", "budget": 603.64, "spent": 663.37},
     {"name": "Farmer's Market/Other", "budget": 0, "spent": 0}
   ],
