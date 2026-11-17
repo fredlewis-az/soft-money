@@ -1,20 +1,20 @@
 {
   "sample": false,
-  "updated_at": "2026-11-16T19:19:02-07:00",
+  "updated_at": "2026-11-17T15:58:49-07:00",
   "month": "2026-11",
   "days_in_month": 30,
-  "day_of_month": 16,
+  "day_of_month": 17,
   "total_budget": 3000.28,
   "categories": [
-    {"name": "Grocery/Pet/etc Store", "budget": 596.36, "spent": 21.62},
-    {"name": "Costco", "budget": 650, "spent": 1313.24},
-    {"name": "Fun", "budget": 600.28, "spent": 410.97},
-    {"name": "Personal Care", "budget": 550, "spent": 263.59},
-    {"name": "Shopping buffer", "budget": 603.64, "spent": 15.12},
-    {"name": "Farmer's Market/Other", "budget": 0, "spent": 0}
+    {"name": "Grocery/Pet/etc Store", "budget": 596.36, "spent": 130.6},
+    {"name": "Costco", "budget": 650.0, "spent": 1423.1},
+    {"name": "Fun", "budget": 600.28, "spent": 477.05},
+    {"name": "Personal Care", "budget": 550.0, "spent": 359.59},
+    {"name": "Shopping buffer", "budget": 603.64, "spent": 55.12},
+    {"name": "Farmer's Market/Other", "budget": 0.0, "spent": 0.0}
   ],
   "pockets": [
-    {"name": "Krystal", "funded": 150, "spent": 15.97},
-    {"name": "Fred", "funded": 150, "spent": 57.15}
+    {"name": "Krystal", "funded": 150.0, "spent": 101.1},
+    {"name": "Fred", "funded": 150.0, "spent": 57.15}
   ]
 }
