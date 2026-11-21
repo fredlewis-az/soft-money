@@ -1,9 +1,9 @@
 {
   "sample": false,
-  "updated_at": "2026-11-19T17:10:57-07:00",
+  "updated_at": "2026-11-20T17:16:36-07:00",
   "month": "2026-11",
   "days_in_month": 30,
-  "day_of_month": 19,
+  "day_of_month": 20,
   "total_budget": 3000.28,
   "categories": [
     {"name": "Grocery/Pet/etc Store", "budget": 596.36, "spent": 204.2},
